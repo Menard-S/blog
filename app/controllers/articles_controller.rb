@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index
-        @articles = Article.all
+        @articles = Article.order(:id)
     end
 
     def show
@@ -27,21 +27,30 @@ class ArticlesController < ApplicationController
         if @article.save
             redirect_to articles_path
         else
-            render :new
+            render :edit, status: :unprocessable_entity
         end
 
     end
 
     def edit
-        #Exercise here
+        @article = Article.find(params[:id])
     end
 
     def update
-        #Exercise here
+        @article = Article.find(params[:id])
+
+        if @article.update(article_params)
+            redirect_to articles_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
     end
 
     def destroy
-        #Exercise here
+        @article = Article.find(params[:id])
+        @article.destroy
+
+        redirect_to articles_path, notice: 'Article was successfully deleted.'
     end
 
     private

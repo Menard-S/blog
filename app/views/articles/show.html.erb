@@ -1,1 +1,5 @@
-<h2><%= @article.title %></h2>
+<h2 class="article-show-title"><%= @article.title %></h2>
+<h3 class="article-show-body"><%= @article.body %></h2>
+<div class="new-article-button">
+  <%= link_to 'Back to articles', articles_path %>
+</div>

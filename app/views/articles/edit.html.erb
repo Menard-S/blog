@@ -11,20 +11,18 @@
   <% end %>
   
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, placeholder: 'Enter title here' %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, placeholder: 'Enter body here' %>
+    <%= form.label :title %><br/>
+    <%= form.text_field :title, value: @article.title, placeholder: 'Enter title here' %><br/>
+    
+    <%= form.label :body %><br/>
+    <%= form.text_area :body, value: @article.body, placeholder: 'Enter body here' %><br/>
   </div>
   
   <div class="actions">
-    <%= form.submit "Submit", class: "submit-button" %>
+    <%= form.submit "Save changes" %>
   </div>
 <% end %>
 
-<div class="back-link">
-  <%= link_to 'Back to articles', articles_path, class: "back-button" %>
+<div>
+  <%= link_to 'Back to articles', articles_path %>
 </div>

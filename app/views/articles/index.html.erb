@@ -1,9 +1,10 @@
-<table>
+<table class="styled-table">
     <thead>
         <tr>
             <th>ID</th>
             <th>Title</th>
             <th>Body</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -12,11 +13,24 @@
                 <td><%= article.id %></td>
                 <td><%= article.title %></td>
                 <td><%= article.body %></td>
+                <td class="actions">
+                    <%= link_to edit_article_path(article), class: "btn edit-button" do %>
+                <i class="fas fa-edit"></i>
+                <% end %>
+
+                <%= button_to article_path(article),
+                            method: :delete,
+                            data: { turbo_confirm: "Are you sure?" },
+                            class: "btn delete-button" do %>
+                <i class="fas fa-trash"></i>
+                <% end %>
+                                
+                </td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-  <div>
+<div class="new-article-button">
   <%= link_to "New article", new_article_path %>
-  </div>
+</div>
